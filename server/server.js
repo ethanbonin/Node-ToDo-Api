@@ -52,12 +52,8 @@ app.get('/todos', (req, res) => {
   });
 });
 
-
-
-
 app.get('/todos/:id', (req, res) => {
     var id = req.params.id
-
 
     //Responde if it's not VALID
     if (!ObjectID.isValid(id)){
@@ -74,7 +70,6 @@ app.get('/todos/:id', (req, res) => {
     })
 
 });
-
 
 app.delete('/todos/:id', (req, res) => {
   var id = req.params.id
@@ -120,9 +115,31 @@ app.patch('/todos/:id', (req, res) => {
   })).catch((e) => {
     res.status(400).send();
   })
-
-
 });
+
+
+//--------USER SERVER ENDPOINTS-------//
+app.post('/users', (req, res) => {
+  var body = _.pick(req.body, ['email', 'password']);
+  var user = new User(body);
+
+  //Model Methods
+
+
+  user.save().then(() => {
+    //Instance Methods
+    //Also this is a promise from the user model function. Because we
+    //returned it.
+    return user.generateAuthToken();
+  }).then((token) => {
+    //x-anything means it's a custom header
+    res.header('x-auth', token).send(user);
+  }).catch((e) => {
+    res.status(400).send(e);
+  });
+});
+
+
 
 
 
