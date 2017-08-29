@@ -19,6 +19,7 @@ const _ = require('lodash');
 
 var {Todo} = require('./db/models/todos');
 var {User} = require('./db/models/users');
+var {authenticate} = require('./middleware/authenticate');
 
 
 var app = express();
@@ -123,9 +124,6 @@ app.post('/users', (req, res) => {
   var body = _.pick(req.body, ['email', 'password']);
   var user = new User(body);
 
-  //Model Methods
-
-
   user.save().then(() => {
     //Instance Methods
     //Also this is a promise from the user model function. Because we
@@ -140,7 +138,9 @@ app.post('/users', (req, res) => {
 });
 
 
-
+app.get('/users/me', authenticate, (req, res) => {
+  res.send(req.user);
+})
 
 
 app.listen(_PORT, () => {
