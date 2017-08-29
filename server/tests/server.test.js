@@ -1,6 +1,7 @@
 //3rd Party Modules
 const expect = require('expect');
 const request = require('supertest'); //Super tests do HTTP requests
+var {ObjectID} = require('mongodb');
 
 //Personal Modules
 const {app} = require('./../server');
@@ -8,8 +9,10 @@ const {Todo} = require('./../db/models/todos');
 
 
 const todos = [{
+  _id: new ObjectID(),
   text: "First Todo"
 }, {
+  _id: new ObjectID(),
   text: "Second Todo"
 }];
 
@@ -94,4 +97,35 @@ describe('GET /todos', () => {
     })
     .end(done);
   })
+});
+
+
+describe('GET /todos/ids', (arguments) => {
+  it('should get single Doc', (done) => {
+    request(app)
+    .get(`/todos/${todos[0]._id.toHexString()}`)
+    .expect(200)
+    .expect((res) => {
+      expect(res.body.todo.text).toBe(todos[0].text);
+    })
+    .end(done);
+  });
+
+
+  it('should return 400 if bad ID', (done) => {
+    request(app)
+    .get('/todos/0928308290')
+    .expect(400)
+    .end(done);
+  });
+
+  it('should return a 404 if not found', (done) => {
+    var hexID = new ObjectID();
+    request(app)
+    .get('/todos/'+hexID)
+    .expect(404)
+    .end(done);
+  })
+
+
 });
