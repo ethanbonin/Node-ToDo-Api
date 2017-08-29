@@ -9,7 +9,7 @@ var Todo = mongoose.model('Todo', {
     minlength: 1, //Doesn't allow this to be just white space
     trim: true //Removes white space
   },
-  complete: {
+  completed: {
     type: Boolean,
     default: false, //You can default values so if they forget to set it
   },
