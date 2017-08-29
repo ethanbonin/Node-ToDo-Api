@@ -6,6 +6,10 @@
 //--------------------------------------------//
 
 
+
+require('./config/config');
+
+
 var {mongoose} = require('./db/mongoose');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -19,7 +23,7 @@ var {User} = require('./db/models/users');
 
 var app = express();
 //Checks the local environment. If it's not there, then use 3000
-const _PORT = process.env.PORT || 3000;
+const _PORT = process.env.PORT;
 
 app.use(bodyParser.json());
 
