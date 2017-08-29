@@ -1,3 +1,11 @@
+//--------------IMPORTANT READ FIRST ----------//
+
+//Make sure inside hte package.json that you add the START SCRIPT for heroku!
+//Make sure to add an engines Property!
+
+//--------------------------------------------//
+
+
 var {mongoose} = require('./db/mongoose');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -8,6 +16,8 @@ var {User} = require('./db/models/users');
 
 
 var app = express();
+//Checks the local environment. If it's not there, then use 3000
+const _PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -63,8 +73,8 @@ app.get('/todos/:id', (req, res) => {
 
 
 
-app.listen(3000, () => {
-  console.log("Running on port: 3000");
+app.listen(_PORT, () => {
+  console.log("Running on port: " + _PORT);
 });
 
 
