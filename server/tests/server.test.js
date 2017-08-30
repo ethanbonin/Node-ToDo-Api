@@ -2,6 +2,8 @@
 const expect = require('expect');
 const request = require('supertest'); //Super tests do HTTP requests
 var {ObjectID} = require('mongodb');
+const util = require('util')
+
 
 //Personal Modules
 const {app} = require('./../server');
@@ -266,5 +268,48 @@ describe('POST /users', () => {
     .send({email: users[0].email, password: users[0].password})
     .expect(400)
     .end(done);
+  });
+});
+
+
+
+describe('POST /users/login', () => {
+
+  it('should login user and return token', (done) => {
+
+    //You are going to use user ONE without a token to make sure that
+    // it ends up getting a token!
+    request(app)
+    .post('/users/login')
+    .send({email: users[1].email, password: users[1].password})
+    .expect(200)
+    .expect((res) => {
+      expect(res.headers['x-auth']).toExist();
+    })
+    .end((err, res) => {
+      if (err) {
+        return done(err);
+      }
+
+
+      User.findById(users[1]._id).then((user) => {
+        expect(user.tokens[0]).toInclude({
+          access: 'auth',
+          token: res.headers['x-auth']
+        });
+        done()
+      }).catch((e) => {
+        done(e);
+      })
+    })
+  })
+
+
+  it('should reject invalid login', (done) => {
+    request(app)
+    .post('/users/login')
+    .send({email: users[1].email, password: users[0].password})
+    .expect(400)
+    .end(done());
   });
 });
