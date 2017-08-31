@@ -43,4 +43,19 @@ After you add these two things ```{JWT_SECRET, config.json}```, then you'll have
 ## ENDPOINTS
 Quick Note, BEFORE you can anything, you have to create (sign up) a user. So I will start with User Endpoints
 --------------------------------
-- # POST
+### POST
+- [/user/](https://github.com/ethanbonin/Node-ToDo-Api/wiki/POST------%5Cuser-%5C)
+- [/user/login/](https://github.com/ethanbonin/Node-ToDo-Api/wiki/POST-user-login)
+- [/todos](https://github.com/ethanbonin/Node-ToDo-Api/wiki/POST-todos)
+--------------------------------
+### GET
+- [/user/me](https://github.com/ethanbonin/Node-ToDo-Api/wiki/GET-user--me)
+- [/todos/](https://github.com/ethanbonin/Node-ToDo-Api/wiki/GET-todos)
+- [/todos/:id](https://github.com/ethanbonin/Node-ToDo-Api/wiki/GET--todos-:id)
+--------------------------------
+### PATCH
+- [/user/me](https://github.com/ethanbonin/Node-ToDo-Api/wiki/PATCH--todos-:id)
+--------------------------------
+### DELETE
+- [/user/me](https://github.com/ethanbonin/Node-ToDo-Api/wiki/DELETE--todos-:id)
+- [/todos/](https://github.com/ethanbonin/Node-ToDo-Api/wiki/DELTE--users-me-token)
