@@ -51,7 +51,7 @@ UserSchema.methods.generateAuthToken = function () {
       _id: user._id.toHexString(),
       access: access
     }, //Secret key
-      'abc123');
+      process.env.JWT_SECRET);
 
 
   //This save the User Model currently. BUT not to the server. So you have
@@ -92,7 +92,7 @@ UserSchema.statics.findByToken = function (token) {
 
 
   try {
-    decoded = jwt.verify(token, 'abc123');
+    decoded = jwt.verify(token, process.env.JWT_SECRET);
   } catch (e) {
     // return new Promse((resolve, reject) => {
     //     reject();
