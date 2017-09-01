@@ -51,7 +51,7 @@ Once you have the localdatabase up and running, you're able to start playing wit
 Quick Note, BEFORE you can anything, you have to create (sign up) a user. So I will start with User Endpoints
 --------------------------------
 ### POST
-- [/user/](https://github.com/ethanbonin/Node-ToDo-Api/wiki/POST------%5Cuser-%5C)
+- [/user/](https://github.com/ethanbonin/Node-ToDo-Api/wiki/POST------%5Cuser-%5C) <-- start with this one first before anything.
 - [/user/login/](https://github.com/ethanbonin/Node-ToDo-Api/wiki/POST-user-login)
 - [/todos](https://github.com/ethanbonin/Node-ToDo-Api/wiki/POST-todos)
 --------------------------------
