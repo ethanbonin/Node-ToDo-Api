@@ -37,7 +37,14 @@ __DONT USE THIS, BUT THIS IS AN EXAMPLE__
 
 ``` heroku config:set JWT_SECRET=lkasdfljdasl ```
 
-After you add these two things ```{JWT_SECRET, config.json}```, then you'll have everything set up.
+After you add these two things ```{JWT_SECRET, config.json}```, You only have one thing left to do.
+
+
+- **Set up MONGO database locally**
+
+```mkdir ~/Documents/MongoData && mongod --dbpath ~/Documents/MongoData```
+
+Once you have the localdatabase up and running, you're able to start playing with the API locally!
 
 
 ## ENDPOINTS
