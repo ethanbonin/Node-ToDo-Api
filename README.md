@@ -61,7 +61,7 @@ Quick Note, BEFORE you can anything, you have to create (sign up) a user. So I w
 - [/todos/:id](https://github.com/ethanbonin/Node-ToDo-Api/wiki/GET--todos-:id)
 --------------------------------
 ### PATCH
-- [/user/me](https://github.com/ethanbonin/Node-ToDo-Api/wiki/PATCH--todos-:id)
+- [/todos/:id](https://github.com/ethanbonin/Node-ToDo-Api/wiki/PATCH--todos-:id)
 --------------------------------
 ### DELETE
 - [/user/me](https://github.com/ethanbonin/Node-ToDo-Api/wiki/DELETE--todos-:id)
